@@ -20,7 +20,7 @@ Based on a static review of the repository, the package has a good skeleton for 
 - **Installation instructions are misleading:** `BiocManager::install("Medinfo-Lab/sciNOME")` is presented as GitHub installation, which is not standard (`README.md:7-15`).
 - **Repository hygiene risk:** the repository root contains `.Rhistory` and `.Renviron`, while `.Rbuildignore` only excludes `.Rproj` artifacts (`.Rbuildignore:1-2`).
 - `NEWS.md` still says “Initial CRAN submission,” which is out of sync with a Bioconductor-facing package (`NEWS.md:1-3`).
-- No package-level help page or `CITATION` file was found.
+- In this static review, I did not find a package-level help page in `man/` or a `CITATION` file in the repository root or `inst/`.
 
 ## 2. Scientific clarity of documentation and vignettes
 
@@ -52,12 +52,12 @@ This is the weakest area relative to Bioconductor expectations.
 
 ### Why this matters
 
-Bioconductor strongly favors interoperable S4 containers such as `SummarizedExperiment`, `SingleCellExperiment`, `GRanges`, or `MultiAssayExperiment`. The current reliance on base `list` and `data.frame` structures weakens interoperability and omits formal validity checks.
+Bioconductor strongly favors interoperable S4 containers such as `SummarizedExperiment`, `SingleCellExperiment`, `GRanges`, or `MultiAssayExperiment`. For the RNA workflow reviewed here, the current reliance on an S3 list-based object weakens interoperability and omits formal validity checks.
 
 ### Recommendation
 
 - At minimum, move the RNA object to a formal S4 class with validity checks.
-- Preferably, build on existing Bioconductor containers instead of maintaining a package-specific object system.
+- Preferably, build the RNA workflow on an existing Bioconductor container instead of maintaining a package-specific object system.
 
 ## 4. Testing
 
